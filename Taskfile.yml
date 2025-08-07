@@ -1,0 +1,26 @@
+---
+version: '3'
+vars:
+  USERNAME: kulinacs
+  REPOSITORY: devcontainer-templates
+tasks:
+  docs:
+    desc: generate README.md files for templates
+    cmds:
+      - devcontainer templates generate-docs --project-folder src
+  publish-agent:
+    deps: [ghcr-login]
+    desc: publish {{.USERNAME}}/{{.REPOSITORY}}/agent
+    cmds:
+      - devcontainer templates publish -n {{.USERNAME}}/{{.REPOSITORY}} src/agent
+  login:
+    desc: login to GitHub
+    cmds:
+      - gh auth login
+    status:
+      - gh auth status
+  ghcr-login:
+    deps: [login]
+    desc: login to ghcr.io
+    cmds:
+      - gh auth token | docker login ghcr.io -u {{.USERNAME}} --password-stdin
