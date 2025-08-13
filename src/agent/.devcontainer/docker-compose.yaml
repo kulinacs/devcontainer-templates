@@ -1,9 +1,0 @@
----
-services:
-  agent:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ..:/workspaces:cached
-    command: sleep infinity

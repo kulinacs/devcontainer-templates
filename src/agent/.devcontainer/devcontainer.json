@@ -4,11 +4,21 @@
     "service": "agent",
     // The optional 'workspaceFolder' property is the path VS Code should open by default when
     // connected. This is typically a file mount in .devcontainer/docker-compose.yml
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "workspaceFolder": "/workspaces/agent",
     // 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
     // "features": {},
     // 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
+    "forwardPorts": [
+        6006 // Arize Phoenix Web UI
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "njpwerner.autodocstring"
+            ]
+        }
+    },
+    "updateContentCommand": "./.devcontainer/update_content_command.sh"
     // "postCreateCommand": "echo '${templateOption:favorite}' > /tmp/color.txt"
     // 👇 Configure tool-specific properties.
     // "customizations": {},

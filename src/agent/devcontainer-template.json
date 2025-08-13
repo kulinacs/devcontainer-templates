@@ -1,6 +1,6 @@
 {
     "id": "agent",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "name": "LLM Agent Template",
     "description": "A Template to build LLM Agents",
     "documentationURL": "https://github.com/kulinacs/devcontainer-templates/tree/main/src/agent",

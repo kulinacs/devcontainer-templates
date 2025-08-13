@@ -1,0 +1,17 @@
+---
+services:
+  # devcontainer
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: service:phoenix
+    volumes:
+      - ..:/workspaces/agent:cached
+    command: sleep infinity
+  # telemetry and collection
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    # ports:
+    #   - "6006:6006"  # UI and OTLP HTTP collector
+    #   - "4317:4317"  # OTLP gRPC collector
